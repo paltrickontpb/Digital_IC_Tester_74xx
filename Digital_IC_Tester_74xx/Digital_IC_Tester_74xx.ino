@@ -4,7 +4,7 @@
 #include <LiquidCrystal.h>
 #include <String.h>
 
-LiquidCrystal lcd(A4,A5,10,11,12,13);//(RS,EN,4,5,6,7)
+LiquidCrystal lcd(A4,A5,10,11,12,13);//(RS,EN,4,5,6,7) on LCD Module
 
 //Initializing Input and Output pins
 int ip1 = 2;
@@ -23,6 +23,8 @@ int op4 = A3;
 
 String icType = "";
 String icNum = "";
+int Rled = 0;
+int Gled = 1;
 
 void setup() {
   //LCD Initialization
@@ -32,8 +34,7 @@ void setup() {
   lcd.print(" IC 74xx Tester ");
   lcd.setCursor(0, 1);
   lcd.print("   By Projjal   ");
-  delay(3000);
-
+  
   // Initializing the type of pin activity
   pinMode(ip1,OUTPUT); 
   pinMode(ip2,OUTPUT);
@@ -49,6 +50,10 @@ void setup() {
   pinMode(op3,INPUT);//IC pin 8
   pinMode(op4,INPUT);//IC pin 11
 
+  //Setup Output LEDs
+  pinMode(Rled,OUTPUT);
+  pinMode(Gled,OUTPUT);
+
   //Setup pins as Input pairs
   digitalWrite(ip1, LOW);//IC pin 1
   digitalWrite(ip2, LOW);//IC pin 2
@@ -62,6 +67,13 @@ void setup() {
   digitalWrite(ip7, HIGH);//IC pin 12
   digitalWrite(ip8, HIGH);//IC pin 13
 
+  digitalWrite(Rled, HIGH);
+  digitalWrite(Gled, HIGH);
+  
+  delay(3000);
+  
+  digitalWrite(Rled, LOW);
+  digitalWrite(Gled, LOW);
 }
 
 
@@ -109,22 +121,34 @@ if (temptype=="none"){
     lcd.setCursor(0,0);
     lcd.print(" ERROR ALERT !! ");
     lcd.setCursor(0,1);
-    lcd.print(" No IC Detected "); 
+    lcd.print(" No IC Detected ");
+    red(); 
 } else if (temptype=="fault"){
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print(" ERROR ALERT !! ");
     lcd.setCursor(0,1);
-    lcd.print("  IC is Faulty!  "); 
+    lcd.print("  IC is Faulty!  ");
+    red(); 
   } else {
     lcd.clear();
     lcd.setCursor(0,0);
     lcd.print("   IC "+tempnum+"   ");
     lcd.setCursor(0,1);
-    lcd.print("  Gate - "+temptype+"  ");  
+    lcd.print("  Gate - "+temptype+"  ");
+    green();  
   }
 }
 
+void red() {
+  digitalWrite(Rled, HIGH);
+  digitalWrite(Gled, LOW);
+}
+
+void green() {
+  digitalWrite(Gled, HIGH);
+  digitalWrite(Rled, LOW);
+}
 
 void loop() { //Main Function that continuously loops
   
