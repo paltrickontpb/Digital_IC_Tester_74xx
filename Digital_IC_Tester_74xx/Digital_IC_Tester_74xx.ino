@@ -1,7 +1,7 @@
 //Digital IC Tester for 74xx Series IC
 //By Projjal Gupta
 
-#include <LiquidCrystal.h>
+#include <LiquidCrystal.h> // LCD library from Arduino
 #include <String.h>
 
 LiquidCrystal lcd(A4,A5,10,11,12,13);//(RS,EN,4,5,6,7) on LCD Module
@@ -72,7 +72,7 @@ void setup() {
   
   delay(3000);
   
-  digitalWrite(Rled, LOW);
+  digitalWrite(Rled, LOW); // Cleaning LEDs
   digitalWrite(Gled, LOW);
 }
 

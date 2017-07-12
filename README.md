@@ -4,7 +4,8 @@
 
 The Digital IC Tester is an electronic project based on the Arduino Board, which is used to segregate and test basic logic gate ICs belonging to the 74xx Series. The Tester sends certain signals to test the functionality of the IC, and gives an output on the LCD screen attached to the Board. The Project is in the form of an arduino shield, or a Tester board which can sit on top of the arduino board.
 
-The Following IC's are Supported :  
+###The Following IC's are Supported :  
+
 IC 7408/7409 - AND GATE  
 IC 7432 - OR GATE  
 IC 7400/7401/7403 - NAND GATE  
