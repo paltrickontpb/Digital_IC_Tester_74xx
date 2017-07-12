@@ -122,7 +122,7 @@ if (temptype=="none"){
     lcd.print(" ERROR ALERT !! ");
     lcd.setCursor(0,1);
     lcd.print(" No IC Detected ");
-    red(); 
+    loopred(); 
 } else if (temptype=="fault"){
     lcd.clear();
     lcd.setCursor(0,0);
@@ -140,14 +140,23 @@ if (temptype=="none"){
   }
 }
 
-void red() {
+void red() { // Red Led Switching
   digitalWrite(Rled, HIGH);
   digitalWrite(Gled, LOW);
 }
 
-void green() {
+void green() { // Green LED switching
   digitalWrite(Gled, HIGH);
   digitalWrite(Rled, LOW);
+}
+
+void loopred() { //Red LED Blinking alert
+  while (true) {
+    red();
+    delay(1000);
+    digitalWrite(Rled, LOW);
+    delay(1000);
+  }
 }
 
 void loop() { //Main Function that continuously loops
