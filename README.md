@@ -17,16 +17,16 @@ IC 74266/72810 - XNOR GATE
 The 4 outputs of the IC's can be used to check the outputs of each test cases in a Truth table. The Input Pairs can be loaded in as per the Pin numbers on the IC.  
 
 Pin    Value  
-1      0  
-2      0  
-4      0  
-5      1  
-7      Vcc  
-9      1  
-10     0  
-12     1  
-13     1  
-14     Gnd  
+1   -   0  
+2   -   0  
+4   -  0  
+5   -  1  
+7   -  Vcc  
+9   -  1  
+10  -  0  
+12  -  1  
+13  -  1  
+14  -  Gnd  
 
 The pins 7 and 14 act as the Voltage input and Ground for the entire 74xx IC series.   
 
